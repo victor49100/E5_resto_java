@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -27,8 +31,12 @@
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jButtonRetour" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
-              <Component id="jLabelTitre" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="326" max="-2" attributes="0"/>
+              <Component id="jLabelTitre" pref="201" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jTextFieldDate1" min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jTextFieldDate2" min="-2" pref="76" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
           </Group>
           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -40,6 +48,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelTitre" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonRetour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDate2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="391" max="32767" attributes="0"/>
@@ -87,6 +97,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldDate1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDate1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldDate2">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDate2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

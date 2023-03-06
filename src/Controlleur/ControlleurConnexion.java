@@ -11,6 +11,7 @@ import java.awt.event.WindowListener;
 import Vue.VueConnexion;
 import Controlleur.*;
 import Metier.Utilisateur;
+import java.awt.event.MouseEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
@@ -35,6 +36,7 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         this.vue.getjTextPassword().addActionListener(this);
         this.vue.getjButtonValider().addActionListener(this);
         this.vue.getNoLog().addActionListener(this);
+        
     }
 
     public VueConnexion getVue() {
@@ -43,6 +45,10 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
 
     public void setVue(VueConnexion vue) {
         this.vue = vue;
+    }
+    
+    public void mouseClicked(WindowEvent e) {
+        
     }
 
     @Override

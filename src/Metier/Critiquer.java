@@ -13,7 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
+import javax.persistence.Temporal;
+import java.util.Date;
 /**
  *
  * @author afiolleau@jolsio.net
@@ -35,6 +36,8 @@ public class Critiquer implements Serializable {
     private Integer note;
     @Column(name = "commentaire")
     private String commentaire;
+    @Column(name = "date")
+    private Date date;
     @JoinColumn(name = "idR", referencedColumnName = "idR", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Resto resto;
