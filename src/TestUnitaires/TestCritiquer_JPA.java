@@ -11,8 +11,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import projet2_resto_java.modele.metier.Critiquer;
-import projet2_resto_java.modele.metier.CritiquerPK;
+import Metier.Critiquer;
+import Metier.CritiquerPK;
 /**
  *
  * @author afiolleau@jolsio.net
@@ -32,7 +32,10 @@ public class TestCritiquer_JPA {
         
         System.out.println("\nTest de la méthode Critiquer.findAll");
         q = em.createNamedQuery("Critiquer.findAll");
-        System.out.println(q.getResultList());
+        //System.out.println(q.getResultList());
+        for (Object unResultat : q.getResultList()){
+            System.out.println(unResultat);
+        }
         
         
         
@@ -59,9 +62,8 @@ public class TestCritiquer_JPA {
         
         System.out.println("\nTest de la méthode Critiquer.findByIdU");
         q = em.createNamedQuery("Critiquer.findByIdU");
-        q.setParameter("idU",1);
+        q.setParameter("idU",1);        
         System.out.println(q.getResultList());
-        
         
         
         System.out.println("Suppression de l'ancien commentaire de test");
@@ -75,13 +77,13 @@ public class TestCritiquer_JPA {
 
         
         
-        System.out.println("\nTest de l'insertion d'une critique");
-        System.out.println("Saisissez le commentaire : ");
-        critique.setCritiquerPK(new CritiquerPK(1,1));
-        critique.setCommentaire(sc.nextLine());
-        System.out.println(critique);
-        persist(em,critique);
-        System.out.println("Fin du test unitaire");
+//        System.out.println("\nTest de l'insertion d'une critique");
+//        System.out.println("Saisissez le commentaire : ");
+//        critique.setCritiquerPK(new CritiquerPK(1,1));
+//        critique.setCommentaire(sc.nextLine());
+//        System.out.println(critique);
+//        persist(em,critique);
+//        System.out.println("Fin du test unitaire");
     }
     private static void lireLaListe(List<Critiquer> list){
         for(Critiquer c : list){
