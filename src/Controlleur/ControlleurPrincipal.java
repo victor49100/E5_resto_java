@@ -20,6 +20,7 @@ public class ControlleurPrincipal {
 
     private ControlleurConnexion CtrlConnexion;
     private ControlleurListeCritique CrtlCritique;
+    private ControlleurDate CrtlControlleurDate;
     private EntityManager em;
     
     //instanciation
@@ -31,6 +32,16 @@ public class ControlleurPrincipal {
     public void setCtrlConnexion(ControlleurConnexion CtrlConnexion) {
         this.CtrlConnexion = CtrlConnexion;
     }
+
+    public void setCrtlControlleurDate(ControlleurDate CrtlControlleurDate) {
+        this.CrtlControlleurDate = CrtlControlleurDate;
+    }
+
+    public ControlleurDate getCrtlControlleurDate() {
+        return CrtlControlleurDate;
+    }
+    
+    
 
     public ControlleurListeCritique getCrtlCritique() {
         return CrtlCritique;
@@ -71,6 +82,15 @@ public class ControlleurPrincipal {
             EntityTransaction tx = em.getTransaction();
             tx.commit();
         }
+    }
+    
+    public void AfficheVueDate() {
+      
+        this.CtrlConnexion.getVue().setVisible(false);
+        this.CrtlCritique.getVue().setVisible(true);
+        this.CrtlCritique.getVue().getModelCritique();
+        this.CrtlControlleurDate.getVue().setVisible(true);
+
     }
 
     public EntityManager getEm() {

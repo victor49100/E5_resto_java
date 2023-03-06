@@ -4,6 +4,9 @@
  */
 package Vue;
 
+import Metier.Critiquer;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -17,13 +20,13 @@ import javax.swing.JTextField;
 public class VueListeCritique extends javax.swing.JFrame {
 
     private DefaultTableModel modelCritique;
-
+    private Critiquer critiquer = new Critiquer();
     /**
      * Creates new form VueListeCritique
      */
     public VueListeCritique() {
         initComponents();
-        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         modelCritique = new DefaultTableModel();
         jTableCritiques.setModel(modelCritique);
         jTableCritiques.setRowHeight(40);
@@ -87,6 +90,11 @@ public class VueListeCritique extends javax.swing.JFrame {
 
         jButtonRetour.setText("Retour");
 
+        jTextFieldDate1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldDate1MouseClicked(evt);
+            }
+        });
         jTextFieldDate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDate1ActionPerformed(evt);
@@ -106,14 +114,14 @@ public class VueListeCritique extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jButtonRetour)
-                .addGap(245, 245, 245)
+                .addGap(194, 194, 194)
                 .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addComponent(jTextFieldDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +147,10 @@ public class VueListeCritique extends javax.swing.JFrame {
     private void jTextFieldDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDate2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDate2ActionPerformed
+
+    private void jTextFieldDate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDate1MouseClicked
+        
+    }//GEN-LAST:event_jTextFieldDate1MouseClicked
 
     /**
      * @param args the command line arguments

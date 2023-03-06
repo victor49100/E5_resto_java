@@ -33,16 +33,19 @@ public class Main {
         System.out.println("Salut la team !");
         //controlleur Principal
         ControlleurPrincipal CtrlP = new ControlleurPrincipal();
+        CtrlP.setEm(em);
 
         //Instancie les vues et Controlleurs
         VueConnexion VueMain = new VueConnexion();
         VueListeCritique vueCritique = new VueListeCritique();
+        VueDate vueDate = new VueDate(vueCritique, true);
         ControlleurConnexion CtrlMain = new ControlleurConnexion(VueMain, CtrlP);
         ControlleurListeCritique CtrlCritique = new ControlleurListeCritique(vueCritique, CtrlP);
+        ControlleurDate CtrlDate = new ControlleurDate(vueDate, CtrlP);
         
         CtrlP.setCrtlCritique(CtrlCritique);
         CtrlP.setCtrlConnexion(CtrlMain);
-        CtrlP.setEm(em);
+        CtrlP.setCrtlControlleurDate(CtrlDate);
 
         //affiche la vue 
         VueMain.setVisible(true);
