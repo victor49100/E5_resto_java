@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,6 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "utilisateur")
+@Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({
     @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
     @NamedQuery(name = "Utilisateur.findByIdU", query = "SELECT u FROM Utilisateur u WHERE u.idU = :idU"),
@@ -60,7 +63,12 @@ public class Utilisateur implements Serializable {
         this.critiquerCollection = critiquerCollection;
     }
 
-    
+    public Utilisateur(Long idU, String mailU, String mdpU, String pseudoU){
+        this.idU = idU;
+        this.mailU = mailU;
+        this.mdpU = mdpU;
+        this.pseudoU = pseudoU;
+    }
     
     public Utilisateur() {
     }

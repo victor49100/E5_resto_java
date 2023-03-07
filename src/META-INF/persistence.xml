@@ -2,11 +2,12 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="Projet2_Resto_JavaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>projet2_resto_java.modele.metier.Critiquer</class>
-    <class>projet2_resto_java.modele.metier.Photo</class>
-    <class>projet2_resto_java.modele.metier.Resto</class>
-    <class>projet2_resto_java.modele.metier.TypesResto</class>
-    <class>projet2_resto_java.modele.metier.Utilisateur</class>
+    <class>Metier.Administrateur</class>
+    <class>Metier.Critiquer</class>
+    <class>Metier.Photo</class>
+    <class>Metier.Resto</class>
+    <class>Metier.TypesResto</class>
+    <class>Metier.Utilisateur</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/resto2?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="resto2_admin"/>

@@ -85,18 +85,22 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         //action 
         if (e.getSource() == vue.getjButtonValider()) {
-            Query requette = this.ctrlP.getEm().createQuery("SELECT c FROM Utilisateur c WHERE c.mailU = \"alex.garat@gmail.com\"");
-            Utilisateur Data = (Utilisateur) requette.getSingleResult();
-            System.out.println(Data.getMdpU());
-            System.out.println(vue.getjTextPassword().getPassword());
-            System.out.println(Data.getMailU());
-            if (vue.getjTextPassword().getPassword().equals(Data.getMdpU())) {
-                System.out.println("mail existe");
-                this.ctrlP.AfficheVueCritique();
-            } else {
-                System.out.println("mail existe pas");
-
-            }
+            String login = vue.getjTextLogin().getText();
+            String mdp = String.valueOf(vue.getjTextPassword().getPassword());
+            System.out.println(mdp);
+            System.out.println(login);
+//            Query requette = this.ctrlP.getEm().createQuery("SELECT c FROM Utilisateur c WHERE c.mailU = \"alex.garat@gmail.com\"");
+//            Utilisateur Data = (Utilisateur) requette.getSingleResult();
+//            System.out.println(Data.getMdpU());
+//            System.out.println(vue.getjTextPassword().getPassword());
+//            System.out.println(Data.getMailU());
+//            if (vue.getjTextPassword().getPassword().equals(Data.getMdpU())) {
+//                System.out.println("mail existe");
+//                this.ctrlP.AfficheVueCritique();
+//            } else {
+//                System.out.println("mail existe pas");
+//
+//            }
 
         }
         if (e.getSource() == vue.getNoLog()) {
