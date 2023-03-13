@@ -9,10 +9,14 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -60,7 +64,12 @@ public class Utilisateur implements Serializable {
         this.critiquerCollection = critiquerCollection;
     }
 
-    
+    public Utilisateur(Long idU, String mailU, String mdpU, String pseudoU){
+        this.idU = idU;
+        this.mailU = mailU;
+        this.mdpU = mdpU;
+        this.pseudoU = pseudoU;
+    }
     
     public Utilisateur() {
     }
@@ -144,7 +153,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "projet2_resto_java.Utilisateur[ idU=" + idU + " ]";
+        return getClass().getName() + "[ idU=" + idU + " ]";
     }
     
 }
