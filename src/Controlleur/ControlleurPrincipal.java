@@ -92,6 +92,15 @@ public class ControlleurPrincipal {
         this.CrtlControlleurDate.getVue().setVisible(true);
 
     }
+    
+    public void cachéVueDate() {
+      
+        this.CtrlConnexion.getVue().setVisible(false);
+        this.CrtlCritique.getVue().setVisible(true);
+        this.CrtlCritique.getVue().getModelCritique();
+        this.CrtlControlleurDate.getVue().setVisible(false);
+
+    }
 
     public EntityManager getEm() {
         return em;

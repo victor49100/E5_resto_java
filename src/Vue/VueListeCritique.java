@@ -32,6 +32,8 @@ public class VueListeCritique extends javax.swing.JFrame {
         jTableCritiques.setRowHeight(40);
 
     }
+    
+
 
     public DefaultTableModel getModelCritique() {
         return this.modelCritique;
@@ -48,7 +50,15 @@ public class VueListeCritique extends javax.swing.JFrame {
     public JTextField getjButtonDate2() {
         return jTextFieldDate2;
     }
+    
+    public void SetjButtonDate1() {
+        jTextFieldDate1.setText("");
+    }
 
+    public void SetjButtonDate2() {
+        jTextFieldDate1.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
