@@ -33,6 +33,7 @@ public class Main {
         System.out.println("Salut la team !");
         //controlleur Principal
         ControlleurPrincipal CtrlP = new ControlleurPrincipal();
+        CtrlP.setEm(em);
 
         //Instancie les vues et Controlleurs
         VueConnexion VueMain = new VueConnexion();
@@ -42,7 +43,6 @@ public class Main {
         
         CtrlP.setCrtlCritique(CtrlCritique);
         CtrlP.setCtrlConnexion(CtrlMain);
-        CtrlP.setEm(em);
 
         //affiche la vue 
         VueMain.setVisible(true);

@@ -9,9 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.swing.table.DefaultTableModel;
-
+import Metier.Critiquer;
+import Metier.Resto;
+import Metier.Utilisateur;
+import javax.persistence.Query;
 /**
  *
  * @author Victor
@@ -39,17 +44,27 @@ public class ControlleurListeCritique implements WindowListener, ActionListener{
     }
     
     private void afficherLesAdresses() {
+        Query q;
         getVue().getModelCritique().setRowCount(0);
         String[] titresColonnes = {"Critique", "Pseudo", "Note","Resto"};
         getVue().getModelCritique().setColumnIdentifiers(titresColonnes);
-        String[] lignes = new String[4];
-        for (int i = 0; i<40; i++) {
-            String ereLigne = "<html><p>Critique  "+ String.valueOf(i) + "</p>";
-            lignes[0] = ereLigne +"<p>Test Skip</p></html>";
-            lignes[1] = "Pseudo maquette "+ String.valueOf(i);
-            lignes[2] = "Note maquette "+ String.valueOf(i);
-            lignes[3] = "Resto maquette "+ String.valueOf(i);
-            getVue().getModelCritique().addRow(lignes);
+        List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAll").getResultList();
+        
+        for (int i = 0; i<critiquerResult.size(); i++) {
+            List<String> lignes = new ArrayList<>();
+            
+            String commentaire = critiquerResult.get(i).getCommentaire();
+            String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
+            String note = "NULL";
+            if (critiquerResult.get(i).getNote()!=null){
+                note = critiquerResult.get(i).getNote().toString();
+            }
+            String nomResto = critiquerResult.get(i).getResto().getNomR();
+            lignes.add(commentaire);
+            lignes.add(pseudo);
+            lignes.add(note);
+            lignes.add(nomResto);
+            getVue().getModelCritique().addRow(lignes.toArray());
         }
         }
     

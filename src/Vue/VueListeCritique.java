@@ -4,6 +4,9 @@
  */
 package Vue;
 
+import Metier.Critiquer;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -15,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
 public class VueListeCritique extends javax.swing.JFrame {
 
     private DefaultTableModel modelCritique;
-
+    private Critiquer critiquer = new Critiquer();
     /**
      * Creates new form VueListeCritique
      */
     public VueListeCritique() {
         initComponents();
-        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         modelCritique = new DefaultTableModel();
         jTableCritiques.setModel(modelCritique);
         jTableCritiques.setRowHeight(40);
