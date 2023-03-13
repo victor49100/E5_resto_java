@@ -41,6 +41,9 @@ public class Critiquer implements Serializable {
     @JoinColumn(name = "idU", referencedColumnName = "idU", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Utilisateur utilisateur;
+    @JoinColumn(name = "idA", referencedColumnName = "idA", insertable = false, updatable = false)
+    @ManyToOne(optional = true)
+    private Administrateur administrateur;
 
     public Critiquer() {
     }
@@ -88,9 +91,17 @@ public class Critiquer implements Serializable {
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
+    
+    public Administrateur getAdministrateur() {
+        return administrateur;
+    }
 
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
+    }
+    
+    public void setAdministrateur(Administrateur administrateur){
+        this.administrateur = administrateur;
     }
 
     @Override

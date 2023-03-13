@@ -9,6 +9,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +29,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "utilisateur")
-@Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({
     @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
     @NamedQuery(name = "Utilisateur.findByIdU", query = "SELECT u FROM Utilisateur u WHERE u.idU = :idU"),
@@ -152,7 +153,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "projet2_resto_java.Utilisateur[ idU=" + idU + " ]";
+        return getClass().getName() + "[ idU=" + idU + " ]";
     }
     
 }

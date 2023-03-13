@@ -12,13 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -27,19 +23,100 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "administrateur")
-@Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({
     @NamedQuery(name = "Administrateur.findAll", query = "SELECT a FROM Administrateur a"),
-    @NamedQuery(name = "Administrateur.findByMdp", query = "SELECT a FROM Administrateur a WHERE a.mdpU = :mdpU")
+    @NamedQuery(name = "Administrateur.findByMdp", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA"),    
+    @NamedQuery(name = "Administrateur.findByConnexion", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA and a.pseudoA = :pseudoA"),
 })
-@PrimaryKeyJoinColumn(name = "adminId")
-public class Administrateur extends Utilisateur implements Serializable  {        
+public class Administrateur implements Serializable  {        
     
-    public Administrateur(Long idU, String mailU, String mdpU, String pseudoU){
-        super(idU, mailU,mdpU,pseudoU);
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idA")
+    private Long idA;
+    @Column(name = "mdpA")
+    private String mdpA;
+    @Column(name = "pseudoA")
+    private String pseudoA;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "administrateur")
+    private Collection<Critiquer> critiquerCollection;
+
+    public Administrateur(Long idU, String mdpU, String pseudoU, Collection<Critiquer> critiquerCollection) {
+        this.idA = idU;
+        this.mdpA = mdpU;
+        this.pseudoA = pseudoU;        
+        this.critiquerCollection = critiquerCollection;
+    }
+
+    public Administrateur(Long idU, String mdpU, String pseudoU){
+        this.idA = idU;
+        this.mdpA = mdpU;
+        this.pseudoA = pseudoU;
     }
     
-    public Administrateur(){
-        
+    public Administrateur() {
     }
+
+    public Administrateur(Long idU) {
+        this.idA = idU;
+    }   
+
+    public Long getIdA() {
+        return idA;
+    }
+
+    public void setIdA(Long idA) {
+        this.idA = idA;
+    }
+
+    public String getMdpA() {
+        return mdpA;
+    }
+
+    public void setMdpA(String mdpA) {
+        this.mdpA = mdpA;
+    }
+
+    public String getPseudoA() {
+        return pseudoA;
+    }
+
+    public void setPseudoA(String pseudoA) {
+        this.pseudoA = pseudoA;
+    }
+
+    public Collection<Critiquer> getCritiquerCollection() {
+        return critiquerCollection;
+    }
+
+    public void setCritiquerCollection(Collection<Critiquer> critiquerCollection) {
+        this.critiquerCollection = critiquerCollection;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idA != null ? idA.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Administrateur)) {
+            return false;
+        }
+        Administrateur other = (Administrateur) object;
+        if ((this.idA == null && other.idA != null) || (this.idA != null && !this.idA.equals(other.idA))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + "[ idU=" + idA + " ]";
+    }  
 }

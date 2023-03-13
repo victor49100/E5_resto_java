@@ -3,42 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package TestUnitaires;
-import java.util.List;
-import java.util.Scanner;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+
 import Metier.Administrateur;
 import Metier.Utilisateur;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
  * @author acassard
  */
-public class TestAdministrateur_JPA {
-     public static void main(String[] args) {
-        Administrateur admin = new Administrateur(Long.MIN_VALUE,"secret1","Admin1");
-        Administrateur admin2 = new Administrateur(Long.MIN_VALUE, "secret2", "Admin2");
+public class TestUtilisateur_JPA {
+    public static void main(String[] args) {
+        Utilisateur util = new Utilisateur(Long.MIN_VALUE, "util1@test.com", "secretUtil", "util1");
+        Utilisateur util2 = new Utilisateur(Long.MIN_VALUE, "util2@test.com", "secretUtil2", "util2");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet2_Resto_JavaPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(admin);
-        em.persist(admin2);
+        em.persist(util);
+        em.persist(util2);
         em.getTransaction().commit();
         Query q;
         
-        System.out.println("\nTest de la méthode Administrateur.findAll");
-        q = em.createNamedQuery("Administrateur.findAll");
+        System.out.println("\nTest de la méthode Utilisateur.findAll");
+        q = em.createNamedQuery("Utilisateur.findAll");
         //System.out.println(q.getResultList());
         for (Object unResultat : q.getResultList()){
             System.out.println(unResultat);
         }
         
-        System.out.println("\nTest de la méthode Administrateur.findByMdp");
-        q = em.createNamedQuery("Administrateur.findByMdp");
-        q.setParameter("mdpA", "secret1");
+        System.out.println("\nTest de la méthode Utilisateur.findByMdpU");
+        q = em.createNamedQuery("Utilisateur.findByMdpU");
+        q.setParameter("mdpU", "secretUtil");
         //System.out.println(q.getResultList());
         for (Object unResultat : q.getResultList()){
             System.out.println(unResultat);

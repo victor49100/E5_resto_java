@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import Vue.VueConnexion;
 import Controlleur.*;
-import Metier.Utilisateur;
+import Metier.Administrateur;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
@@ -89,18 +89,16 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
             String mdp = String.valueOf(vue.getjTextPassword().getPassword());
             System.out.println(mdp);
             System.out.println(login);
-//            Query requette = this.ctrlP.getEm().createQuery("SELECT c FROM Utilisateur c WHERE c.mailU = \"alex.garat@gmail.com\"");
-//            Utilisateur Data = (Utilisateur) requette.getSingleResult();
-//            System.out.println(Data.getMdpU());
-//            System.out.println(vue.getjTextPassword().getPassword());
-//            System.out.println(Data.getMailU());
-//            if (vue.getjTextPassword().getPassword().equals(Data.getMdpU())) {
-//                System.out.println("mail existe");
-//                this.ctrlP.AfficheVueCritique();
-//            } else {
-//                System.out.println("mail existe pas");
-//
-//            }
+            Query requete = this.ctrlP.getEm().createNamedQuery("Administrateur.findByConnexion");
+            requete.setParameter("mdpA", mdp);
+            requete.setParameter("pseudoA", login);
+            try {
+                Administrateur admin = (Administrateur) requete.getSingleResult();
+                System.out.println("mail existe");
+                this.ctrlP.AfficheVueCritique();                
+            } catch (Exception exception) {
+                System.out.println("Oups pas d'admin");
+            }
 
         }
         if (e.getSource() == vue.getNoLog()) {
