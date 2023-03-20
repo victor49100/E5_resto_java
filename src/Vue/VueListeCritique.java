@@ -43,21 +43,22 @@ public class VueListeCritique extends javax.swing.JFrame {
         return jButtonRetour;
     }
 
-    public JTextField getjButtonDate1() {
-        return jTextFieldDate1;
+    public JButton getjButtonDate1() {
+        return jButtonDate1;
     }
 
-    public JTextField getjButtonDate2() {
-        return jTextFieldDate2;
-    }
-    
-    public void SetjButtonDate1() {
-        jTextFieldDate1.setText("");
+    public JButton getjButtonDate2() {
+        return jButtonDate2;
     }
 
-    public void SetjButtonDate2() {
-        jTextFieldDate1.setText("");
+    public void setjButtonDate1(JButton jButtonDate1) {
+        this.jButtonDate1 = jButtonDate1;
     }
+
+    public void setjButtonDate2(JButton jButtonDate2) {
+        this.jButtonDate2 = jButtonDate2;
+    }
+       
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,8 +75,11 @@ public class VueListeCritique extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCritiques = new javax.swing.JTable();
         jButtonRetour = new javax.swing.JButton();
-        jTextFieldDate1 = new javax.swing.JTextField();
-        jTextFieldDate2 = new javax.swing.JTextField();
+        jButtonDate1 = new javax.swing.JButton();
+        jButtonDate2 = new javax.swing.JButton();
+        jLabelFiltre = new javax.swing.JLabel();
+        jLabelDu = new javax.swing.JLabel();
+        jLabelAu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,22 +104,17 @@ public class VueListeCritique extends javax.swing.JFrame {
 
         jButtonRetour.setText("Retour");
 
-        jTextFieldDate1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldDate1MouseClicked(evt);
-            }
-        });
-        jTextFieldDate1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDate1ActionPerformed(evt);
-            }
-        });
+        jButtonDate1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTextFieldDate2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDate2ActionPerformed(evt);
-            }
-        });
+        jButtonDate2.setMaximumSize(new java.awt.Dimension(83, 25));
+        jButtonDate2.setMinimumSize(new java.awt.Dimension(83, 25));
+        jButtonDate2.setPreferredSize(new java.awt.Dimension(83, 25));
+
+        jLabelFiltre.setText("Filtrer les avis par date:");
+
+        jLabelDu.setText("Du");
+
+        jLabelAu.setText("Au");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,43 +123,51 @@ public class VueListeCritique extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jButtonRetour)
-                .addGap(194, 194, 194)
-                .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                .addGap(69, 69, 69)
-                .addComponent(jTextFieldDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
+                .addGap(78, 78, 78)
+                .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabelDu)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabelAu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelFiltre)
+                        .addGap(150, 150, 150))))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTitre)
-                    .addComponent(jButtonRetour)
-                    .addComponent(jTextFieldDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTitre)
+                            .addComponent(jButtonRetour))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelFiltre)
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonDate2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonDate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDu)
+                            .addComponent(jLabelAu))
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDate1ActionPerformed
-
-    private void jTextFieldDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDate2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDate2ActionPerformed
-
-    private void jTextFieldDate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDate1MouseClicked
-        
-    }//GEN-LAST:event_jTextFieldDate1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -199,11 +206,14 @@ public class VueListeCritique extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButtonDate1;
+    private javax.swing.JButton jButtonDate2;
     private javax.swing.JButton jButtonRetour;
+    private javax.swing.JLabel jLabelAu;
+    private javax.swing.JLabel jLabelDu;
+    private javax.swing.JLabel jLabelFiltre;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCritiques;
-    private javax.swing.JTextField jTextFieldDate1;
-    private javax.swing.JTextField jTextFieldDate2;
     // End of variables declaration//GEN-END:variables
 }

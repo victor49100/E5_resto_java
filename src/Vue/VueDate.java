@@ -4,6 +4,7 @@
  */
 package Vue;
 
+import com.toedter.calendar.JCalendar;
 import java.util.Date;
 import javax.swing.JButton;
 
@@ -33,7 +34,7 @@ public class VueDate extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendarDate = new com.toedter.calendar.JCalendar();
         jButtonOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,7 +54,7 @@ public class VueDate extends javax.swing.JDialog {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCalendarDate, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonOK)
@@ -63,7 +64,7 @@ public class VueDate extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCalendarDate, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonOK)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -76,8 +77,16 @@ public class VueDate extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOKActionPerformed
 
-    public JButton getJbuttonok(){
+    public JButton getJbuttonOk(){
         return jButtonOK;
+    }
+
+    public JCalendar getjCalendarDate() {
+        return jCalendarDate;
+    }
+
+    public void setjCalendarDate(JCalendar jCalendarDate) {
+        this.jCalendarDate = jCalendarDate;
     }
     
     /**
@@ -125,6 +134,6 @@ public class VueDate extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonOK;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendarDate;
     // End of variables declaration//GEN-END:variables
 }

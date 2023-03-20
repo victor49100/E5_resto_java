@@ -43,11 +43,10 @@ public class ControlleurDate implements WindowListener, ActionListener {
     public ControlleurDate(VueDate vue, ControlleurPrincipal ctrlP) {
         this.vue = vue;
         this.ctrlP = ctrlP;
-       
-
         // le contrôleur écoute la vue
-        this.vue.addWindowListener(this);
-        this.vue.getJbuttonok();
+        this.vue.addWindowListener(this);    
+        this.vue.getJbuttonOk().addActionListener(this);
+        //this.vue.getjCalendarDate().addPropertyChangeListener(listener);
 
     }
 
@@ -100,9 +99,8 @@ public class ControlleurDate implements WindowListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vue.getJbuttonok()) {
-               ctrlP.cachéVueDate();
-               System.out.println("fin du game");
+        if (e.getSource() == vue.getJbuttonOk()) {
+               ctrlP.cacheVueDate();               
         }
 
     }

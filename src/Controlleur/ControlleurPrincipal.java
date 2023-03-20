@@ -93,7 +93,7 @@ public class ControlleurPrincipal {
 
     }
     
-    public void cachéVueDate() {
+    public void cacheVueDate() {
       
         this.CtrlConnexion.getVue().setVisible(false);
         this.CrtlCritique.getVue().setVisible(true);
