@@ -12,6 +12,9 @@ import Vue.VueConnexion;
 import Controlleur.*;
 import Metier.Administrateur;
 import java.awt.event.MouseEvent;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
@@ -36,7 +39,7 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         this.vue.getjTextPassword().addActionListener(this);
         this.vue.getjButtonValider().addActionListener(this);
         this.vue.getNoLog().addActionListener(this);
-        
+
     }
 
     public VueConnexion getVue() {
@@ -46,9 +49,9 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
     public void setVue(VueConnexion vue) {
         this.vue = vue;
     }
-    
+
     public void mouseClicked(WindowEvent e) {
-        
+
     }
 
     @Override
@@ -84,7 +87,7 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-
+        
     }
 
     @Override
@@ -93,15 +96,18 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         if (e.getSource() == vue.getjButtonValider()) {
             String login = vue.getjTextLogin().getText();
             String mdp = String.valueOf(vue.getjTextPassword().getPassword());
-            System.out.println(mdp);
-            System.out.println(login);
             Query requete = this.ctrlP.getEm().createNamedQuery("Administrateur.findByConnexion");
-            requete.setParameter("mdpA", mdp);
-            requete.setParameter("pseudoA", login);
             try {
+                requete.setParameter("pseudoA", login);
+                //ont hash le mdp
+                String MdpHash = HashToMd5(mdp);
+                System.out.println(MdpHash);
+                // on set le mdp dans le query
+                requete.setParameter("mdpA", MdpHash);
+                //ont test la corespondance
                 Administrateur admin = (Administrateur) requete.getSingleResult();
                 System.out.println("mail existe");
-                this.ctrlP.AfficheVueCritique();                
+                this.ctrlP.AfficheVueCritique();
             } catch (Exception exception) {
                 System.out.println("Oups pas d'admin");
             }
@@ -110,6 +116,32 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         if (e.getSource() == vue.getNoLog()) {
             System.out.println("vue critique");
             this.ctrlP.AfficheVueCritique();
+        }
+
+    }
+
+    //methode de hash password en MD5
+    private String HashToMd5(String passwordToHash) {
+        try {
+            // Création d'une instance du message digest MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // Conversion de la chaîne de caractères en tableau de bytes
+            byte[] passwordBytes = passwordToHash.getBytes();
+
+            // Calcul du hash MD5
+            byte[] hashBytes = md.digest(passwordBytes);
+
+            // Conversion du hash en chaîne de caractères hexadécimaux
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            // Cette exception se produit si l'algorithme MD5 n'est pas supporté par la JVM
+            e.printStackTrace();
+            return null;
         }
 
     }
