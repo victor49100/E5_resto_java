@@ -10,10 +10,10 @@
     <class>Metier.Critiquer</class>
     <class>Metier.Responsable</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/resto2?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="resto2_admin"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.15.253.250:3306/2slamprj2eq11_resto2?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="2slamprj2eq11"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="secret"/>
+      <property name="javax.persistence.jdbc.password" value="RoY+4WC!4e"/>
     </properties>
   </persistence-unit>
 </persistence>
