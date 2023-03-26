@@ -21,6 +21,7 @@ public class ControlleurPrincipal {
     private ControlleurConnexion CtrlConnexion;
     private ControlleurListeCritique CrtlCritique;
     private ControlleurDate CrtlControlleurDate;
+    private ControlleurResponsable CtrlResp;
     private EntityManager em;
     
     //instanciation
@@ -36,6 +37,10 @@ public class ControlleurPrincipal {
     public void setCrtlControlleurDate(ControlleurDate CrtlControlleurDate) {
         this.CrtlControlleurDate = CrtlControlleurDate;
     }
+
+    public void setCtrlResp(ControlleurResponsable CtrlResp) {
+        this.CtrlResp = CtrlResp;
+    }    
 
     public ControlleurDate getCrtlControlleurDate() {
         return CrtlControlleurDate;
@@ -63,6 +68,11 @@ public class ControlleurPrincipal {
         this.CrtlCritique.getVue().setVisible(false);
         this.CtrlConnexion.getVue().setVisible(true);
 
+    }
+    
+    public void afficherVueResp() {
+        this.CtrlConnexion.getVue().setVisible(false);
+        this.CtrlResp.getVue().setVisible(true);
     }
 
     public void quitterVueCommentaire() {

@@ -30,7 +30,6 @@ public class Main {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         
-        System.out.println("Salut la team !");
         //controlleur Principal
         ControlleurPrincipal CtrlP = new ControlleurPrincipal();
         CtrlP.setEm(em);
@@ -39,13 +38,16 @@ public class Main {
         VueConnexion VueMain = new VueConnexion();
         VueListeCritique vueCritique = new VueListeCritique();
         VueDate vueDate = new VueDate(vueCritique, true);
+        VueResponsable vueResp = new VueResponsable();
         ControlleurConnexion CtrlMain = new ControlleurConnexion(VueMain, CtrlP);
         ControlleurListeCritique CtrlCritique = new ControlleurListeCritique(vueCritique, CtrlP);
         ControlleurDate CtrlDate = new ControlleurDate(vueDate, CtrlP);
+        ControlleurResponsable CtrlResp = new ControlleurResponsable(vueResp, CtrlP);
         
         CtrlP.setCrtlCritique(CtrlCritique);
         CtrlP.setCtrlConnexion(CtrlMain);
         CtrlP.setCrtlControlleurDate(CtrlDate);
+        CtrlP.setCtrlResp(CtrlResp);
 
         //affiche la vue 
         VueMain.setVisible(true);

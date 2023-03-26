@@ -11,6 +11,7 @@ import java.awt.event.WindowListener;
 import Vue.VueConnexion;
 import Controlleur.*;
 import Metier.Administrateur;
+import Metier.Responsable;
 import java.awt.event.MouseEvent;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -38,7 +39,6 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         this.vue.getjTextLogin().addActionListener(this);
         this.vue.getjTextPassword().addActionListener(this);
         this.vue.getjButtonValider().addActionListener(this);
-        this.vue.getNoLog().addActionListener(this);
 
     }
 
@@ -101,21 +101,20 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
                 requete.setParameter("pseudoA", login);
                 //ont hash le mdp
                 String MdpHash = HashToMd5(mdp);
-                System.out.println(MdpHash);
                 // on set le mdp dans le query
                 requete.setParameter("mdpA", MdpHash);
                 //ont test la corespondance
+                if (requete.getSingleResult().getClass() == Administrateur.class){
                 Administrateur admin = (Administrateur) requete.getSingleResult();
-                System.out.println("mail existe");
                 this.ctrlP.AfficheVueCritique();
+                }
+                if (requete.getSingleResult().getClass() == Responsable.class){
+                    this.ctrlP.afficherVueResp();
+                }
+                
             } catch (Exception exception) {
-                System.out.println("Oups pas d'admin");
             }
 
-        }
-        if (e.getSource() == vue.getNoLog()) {
-            System.out.println("vue critique");
-            this.ctrlP.AfficheVueCritique();
         }
 
     }

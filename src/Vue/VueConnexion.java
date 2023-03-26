@@ -39,16 +39,15 @@ public class VueConnexion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextPassword = new javax.swing.JPasswordField();
         jButtonValider = new javax.swing.JButton();
-        noLog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Modération ultime = pas nous");
+        jLabel1.setText("Modération des critiques");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu Mono", 0, 24)); // NOI18N
-        jLabel2.setText("Page d'autentification");
+        jLabel2.setText("Page d'authentification");
         jLabel2.setAutoscrolls(true);
 
         jLabel3.setText("Login");
@@ -61,8 +60,6 @@ public class VueConnexion extends javax.swing.JFrame {
                 jButtonValiderActionPerformed(evt);
             }
         });
-
-        noLog.setText("Oups j'ai pas de MDP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,24 +78,20 @@ public class VueConnexion extends javax.swing.JFrame {
                 .addComponent(jButtonValider)
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(noLog)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(190, 190, 190)
+                .addComponent(jLabel2)
+                .addContainerGap(178, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(170, 170, 170))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -110,9 +103,7 @@ public class VueConnexion extends javax.swing.JFrame {
                     .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jButtonValider)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(noLog)
-                .addContainerGap())
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,9 +131,6 @@ public class VueConnexion extends javax.swing.JFrame {
         return jButtonValider;
     }
 
-    public JButton getNoLog() {
-        return noLog;
-    }
     
     
     
@@ -190,6 +178,5 @@ public class VueConnexion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextLogin;
     private javax.swing.JPasswordField jTextPassword;
-    private javax.swing.JButton noLog;
     // End of variables declaration//GEN-END:variables
 }

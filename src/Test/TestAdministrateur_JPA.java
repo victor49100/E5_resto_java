@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package TestUnitaires;
+package Test;
 import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
@@ -39,6 +39,15 @@ public class TestAdministrateur_JPA {
         System.out.println("\nTest de la méthode Administrateur.findByMdp");
         q = em.createNamedQuery("Administrateur.findByMdp");
         q.setParameter("mdpA", "secret1");
+        //System.out.println(q.getResultList());
+        for (Object unResultat : q.getResultList()){
+            System.out.println(unResultat);
+        }
+        
+        System.out.println("\nTest de la méthode Administrateur.findByConnexion");
+        q = em.createNamedQuery("Administrateur.findByConnexion");
+        q.setParameter("mdpA", "secret1");
+        q.setParameter("pseudoA", "Admin1");
         //System.out.println(q.getResultList());
         for (Object unResultat : q.getResultList()){
             System.out.println(unResultat);

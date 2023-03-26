@@ -8,10 +8,14 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,6 +32,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Administrateur.findByMdp", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA"),    
     @NamedQuery(name = "Administrateur.findByConnexion", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA and a.pseudoA = :pseudoA"),
 })
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="role")
 public class Administrateur implements Serializable  {        
     
     private static final long serialVersionUID = 1L;
