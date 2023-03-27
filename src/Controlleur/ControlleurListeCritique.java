@@ -48,24 +48,24 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
     private void afficherLesAdresses() {
         Query q;
         getVue().getModelCritique().setRowCount(0);
-        String[] titresColonnes = {"Critique", "Pseudo", "Note", "Resto"};
+        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note"};
         getVue().getModelCritique().setColumnIdentifiers(titresColonnes);
         List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAll").getResultList();
 
         for (int i = 0; i < critiquerResult.size(); i++) {
             List<String> lignes = new ArrayList<>();
 
-            String commentaire = critiquerResult.get(i).getCommentaire();
             String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
+            String commentaire = critiquerResult.get(i).getCommentaire();
             String note = "NULL";
             if (critiquerResult.get(i).getNote() != null) {
                 note = critiquerResult.get(i).getNote().toString();
             }
             String nomResto = critiquerResult.get(i).getResto().getNomR();
-            lignes.add(commentaire);
             lignes.add(pseudo);
-            lignes.add(note);
             lignes.add(nomResto);
+            lignes.add(commentaire);
+            lignes.add(note);
             getVue().getModelCritique().addRow(lignes.toArray());
         }
     }
@@ -118,7 +118,6 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
             CtrlP.AfficheVueDate();
 
         }
-        
 
     }
 
