@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import Metier.Critiquer;
 import Metier.Resto;
 import Metier.Utilisateur;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Query;
 
@@ -28,6 +29,9 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
 
     private Vue.VueListeCritique vue;
     private ControlleurPrincipal CtrlP;
+    String date1 = "";
+    String date2 = "";
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 
     public ControlleurListeCritique(VueListeCritique vue, ControlleurPrincipal CtrlP) {
         this.vue = vue;
@@ -35,6 +39,10 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
         this.vue.getjButtonRetour().addActionListener(this);
+        this.vue.getDate1();
+        this.vue.getDate2();
+        this.vue.getBoutonCommentaire().addActionListener(this);
+        this.vue.getTest().addActionListener(this);
 
         //afficher les commentaires
         afficherLesAdresses();
@@ -72,9 +80,42 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         }
     }
 
+    private void afficherLesAdressesBetwenDate(String dateDebut, String dateFin) {
+        Query q;
+        getVue().getModelCritique().setRowCount(0);
+        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note", "Date"};
+        getVue().getModelCritique().setColumnIdentifiers(titresColonnes);
+
+        // Créer la requête nommée "Critiquer.findByDate" pour obtenir les commentaires triés par date
+        q = CtrlP.getEm().createNamedQuery("Critiquer.findByDate");
+        q.setParameter("dateDebut", dateDebut);
+        q.setParameter("dateFin", dateFin);
+        List<Critiquer> critiquerResult = q.getResultList();
+
+        for (int i = 0; i < critiquerResult.size(); i++) {
+            List<String> lignes = new ArrayList<>();
+
+            String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
+            String commentaire = critiquerResult.get(i).getCommentaire();
+            Date dateCom = critiquerResult.get(i).getDate();
+            String dateComStr = dateCom + "";
+            String note = "NULL";
+            if (critiquerResult.get(i).getNote() != null) {
+                note = critiquerResult.get(i).getNote().toString();
+            }
+            String nomResto = critiquerResult.get(i).getResto().getNomR();
+            lignes.add(pseudo);
+            lignes.add(nomResto);
+            lignes.add(commentaire);
+            lignes.add(note);
+            lignes.add(dateComStr);
+            getVue().getModelCritique().addRow(lignes.toArray());
+        }
+    }
+
     @Override
     public void windowOpened(WindowEvent e) {
-        
+
     }
 
     @Override
@@ -109,8 +150,22 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == vue.getTest()) {
+            
+            date1 = vue.getDateChooserCombo1().getText();
+            date2 = vue.getDateChooserCombo2().getText();
+            this.vue.getDate1().setText("" + vue.getDateChooserCombo1().getText());
+            this.vue.getDate2().setText("" + vue.getDateChooserCombo2().getText());
+            afficherLesAdressesBetwenDate(date1, date2);
+        }
+
         if (e.getSource() == vue.getjButtonRetour()) {
             CtrlP.quitterVueCommentaire();
+        }
+        
+        if (e.getSource() == vue.getBoutonCommentaire()) {
+            afficherLesAdresses();
         }
 
     }

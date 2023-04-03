@@ -23,6 +23,7 @@ import java.util.Date;
 @Entity
 @Table(name = "critiquer")
 @NamedQueries({
+    @NamedQuery(name = "Critiquer.findByDate", query = "SELECT c FROM Critiquer c WHERE c.date BETWEEN :dateDebut AND :dateFin"),
     @NamedQuery(name = "Critiquer.findAllOrderByDateDesc", query = "SELECT c FROM Critiquer c ORDER BY c.date DESC"),
     @NamedQuery(name = "Critiquer.findAll", query = "SELECT c FROM Critiquer c"),
     @NamedQuery(name = "Critiquer.findByIdR", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idR = :idR"),
