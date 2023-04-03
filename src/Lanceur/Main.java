@@ -37,16 +37,13 @@ public class Main {
         //Instancie les vues et Controlleurs
         VueConnexion VueMain = new VueConnexion();
         VueListeCritique vueCritique = new VueListeCritique();
-        VueDate vueDate = new VueDate(vueCritique, true);
         VueResponsable vueResp = new VueResponsable();
         ControlleurConnexion CtrlMain = new ControlleurConnexion(VueMain, CtrlP);
         ControlleurListeCritique CtrlCritique = new ControlleurListeCritique(vueCritique, CtrlP);
-        ControlleurDate CtrlDate = new ControlleurDate(vueDate, CtrlP);
         ControlleurResponsable CtrlResp = new ControlleurResponsable(vueResp, CtrlP);
         
         CtrlP.setCrtlCritique(CtrlCritique);
         CtrlP.setCtrlConnexion(CtrlMain);
-        CtrlP.setCrtlControlleurDate(CtrlDate);
         CtrlP.setCtrlResp(CtrlResp);
 
         //affiche la vue 

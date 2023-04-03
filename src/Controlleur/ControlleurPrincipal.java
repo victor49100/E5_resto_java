@@ -20,10 +20,9 @@ public class ControlleurPrincipal {
 
     private ControlleurConnexion CtrlConnexion;
     private ControlleurListeCritique CrtlCritique;
-    private ControlleurDate CrtlControlleurDate;
     private ControlleurResponsable CtrlResp;
     private EntityManager em;
-    
+
     //instanciation
     //accesseur et mutateurs
     public ControlleurConnexion getCtrlConnexion() {
@@ -34,19 +33,9 @@ public class ControlleurPrincipal {
         this.CtrlConnexion = CtrlConnexion;
     }
 
-    public void setCrtlControlleurDate(ControlleurDate CrtlControlleurDate) {
-        this.CrtlControlleurDate = CrtlControlleurDate;
-    }
-
     public void setCtrlResp(ControlleurResponsable CtrlResp) {
         this.CtrlResp = CtrlResp;
-    }    
-
-    public ControlleurDate getCrtlControlleurDate() {
-        return CrtlControlleurDate;
     }
-    
-    
 
     public ControlleurListeCritique getCrtlCritique() {
         return CrtlCritique;
@@ -69,7 +58,7 @@ public class ControlleurPrincipal {
         this.CtrlConnexion.getVue().setVisible(true);
 
     }
-    
+
     public void afficherVueResp() {
         this.CtrlConnexion.getVue().setVisible(false);
         this.CtrlResp.getVue().setVisible(true);
@@ -93,24 +82,6 @@ public class ControlleurPrincipal {
             tx.commit();
         }
     }
-    
-    public void AfficheVueDate() {
-      
-        this.CtrlConnexion.getVue().setVisible(false);
-        this.CrtlCritique.getVue().setVisible(true);
-        this.CrtlCritique.getVue().getModelCritique();
-        this.CrtlControlleurDate.getVue().setVisible(true);
-
-    }
-    
-    public void cacheVueDate() {
-      
-        this.CtrlConnexion.getVue().setVisible(false);
-        this.CrtlCritique.getVue().setVisible(true);
-        this.CrtlCritique.getVue().getModelCritique();
-        this.CrtlControlleurDate.getVue().setVisible(false);
-
-    }
 
     public EntityManager getEm() {
         return em;
@@ -119,5 +90,5 @@ public class ControlleurPrincipal {
     public void setEm(EntityManager em) {
         this.em = em;
     }
-    
+
 }
