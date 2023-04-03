@@ -132,7 +132,13 @@ public class VueConnexion extends javax.swing.JFrame {
         return jButtonValider;
     }
 
-    
+    public void setjTextPassword(JPasswordField jTextPassword) {
+        this.jTextPassword = jTextPassword;
+    }
+
+    public void setjTextLogin(JTextField jTextLogin) {
+        this.jTextLogin = jTextLogin;
+    }
     
     
     /**

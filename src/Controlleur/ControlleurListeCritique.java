@@ -35,10 +35,8 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
         this.vue.getjButtonRetour().addActionListener(this);
-        this.vue.getjButtonDate1().addActionListener(this);
-        this.vue.getjButtonDate2().addActionListener(this);
-        //afficher les commentaires
 
+        //afficher les commentaires
         afficherLesAdresses();
     }
 
@@ -49,7 +47,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
     private void afficherLesAdresses() {
         Query q;
         getVue().getModelCritique().setRowCount(0);
-        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note","Date"};
+        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note", "Date"};
         getVue().getModelCritique().setColumnIdentifiers(titresColonnes);
         List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAllOrderByDateDesc").getResultList();
 
@@ -59,7 +57,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
             String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
             String commentaire = critiquerResult.get(i).getCommentaire();
             Date dateCom = critiquerResult.get(i).getDate();
-            String dateComStr = dateCom+"";
+            String dateComStr = dateCom + "";
             String note = "NULL";
             if (critiquerResult.get(i).getNote() != null) {
                 note = critiquerResult.get(i).getNote().toString();
@@ -76,7 +74,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
 
     @Override
     public void windowOpened(WindowEvent e) {
-
+        
     }
 
     @Override
@@ -113,14 +111,6 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vue.getjButtonRetour()) {
             CtrlP.quitterVueCommentaire();
-        }
-        if (e.getSource() == vue.getjButtonDate1()) {
-            CtrlP.AfficheVueDate();
-
-        }
-        if (e.getSource() == vue.getjButtonDate2()) {
-            CtrlP.AfficheVueDate();
-
         }
 
     }

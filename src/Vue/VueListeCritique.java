@@ -5,7 +5,7 @@
 package Vue;
 
 import Metier.Critiquer;
-import com.toedter.calendar.JDateChooser;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -23,6 +23,7 @@ public class VueListeCritique extends javax.swing.JFrame {
 
     private DefaultTableModel modelCritique;
     private Critiquer critiquer = new Critiquer();
+
     /**
      * Creates new form VueListeCritique
      */
@@ -32,10 +33,8 @@ public class VueListeCritique extends javax.swing.JFrame {
         modelCritique = new DefaultTableModel();
         jTableCritiques.setModel(modelCritique);
         jTableCritiques.setRowHeight(40);
-        
-    }
-    
 
+    }
 
     public DefaultTableModel getModelCritique() {
         return this.modelCritique;
@@ -45,23 +44,6 @@ public class VueListeCritique extends javax.swing.JFrame {
         return jButtonRetour;
     }
 
-    public JButton getjButtonDate1() {
-        return jButtonDate1;
-    }
-
-    public JButton getjButtonDate2() {
-        return jButtonDate2;
-    }
-
-    public void setjButtonDate1(JButton jButtonDate1) {
-        this.jButtonDate1 = jButtonDate1;
-    }
-
-    public void setjButtonDate2(JButton jButtonDate2) {
-        this.jButtonDate2 = jButtonDate2;
-    }
-       
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,12 +59,11 @@ public class VueListeCritique extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCritiques = new javax.swing.JTable();
         jButtonRetour = new javax.swing.JButton();
-        jButtonDate1 = new javax.swing.JButton();
-        jButtonDate2 = new javax.swing.JButton();
         jLabelFiltre = new javax.swing.JLabel();
         jLabelDu = new javax.swing.JLabel();
         jLabelAu = new javax.swing.JLabel();
         dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,12 +87,11 @@ public class VueListeCritique extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableCritiques);
 
         jButtonRetour.setText("Retour");
-
-        jButtonDate1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButtonDate2.setMaximumSize(new java.awt.Dimension(83, 25));
-        jButtonDate2.setMinimumSize(new java.awt.Dimension(83, 25));
-        jButtonDate2.setPreferredSize(new java.awt.Dimension(83, 25));
+        jButtonRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRetourActionPerformed(evt);
+            }
+        });
 
         jLabelFiltre.setText("Filtrer les avis par date:");
 
@@ -132,15 +112,13 @@ public class VueListeCritique extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabelDu)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(115, 115, 115)
+                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
                         .addComponent(jLabelAu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
+                        .addGap(113, 113, 113)
+                        .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelFiltre)
@@ -162,19 +140,21 @@ public class VueListeCritique extends javax.swing.JFrame {
                         .addComponent(jLabelFiltre)
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButtonDate2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonDate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelDu)
-                                .addComponent(jLabelAu))
-                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                            .addComponent(jLabelDu)
+                            .addComponent(jLabelAu)
+                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetourActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,8 +193,7 @@ public class VueListeCritique extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private datechooser.beans.DateChooserCombo dateChooserCombo1;
-    private javax.swing.JButton jButtonDate1;
-    private javax.swing.JButton jButtonDate2;
+    private datechooser.beans.DateChooserCombo dateChooserCombo2;
     private javax.swing.JButton jButtonRetour;
     private javax.swing.JLabel jLabelAu;
     private javax.swing.JLabel jLabelDu;
