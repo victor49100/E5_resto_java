@@ -31,14 +31,16 @@
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jButtonRetour" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              <Component id="jLabelTitre" pref="193" max="32767" attributes="0"/>
+              <Component id="jLabelTitre" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Component id="jLabelDu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDate1" min="-2" pref="85" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="dateChooserCombo1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelAu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDate2" min="-2" max="-2" attributes="0"/>
@@ -71,12 +73,15 @@
                       <Component id="jLabelFiltre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonDate2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonDate1" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jLabelDu" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelAu" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButtonDate2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonDate1" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jLabelDu" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAu" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="dateChooserCombo1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="jScrollPane1" pref="349" max="32767" attributes="0"/>
@@ -95,7 +100,7 @@
         <Property name="text" type="java.lang.String" value="Les Critiques"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Curseur par d&#xe9;faut"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
     </Component>
@@ -155,7 +160,7 @@
     <Component class="javax.swing.JButton" name="jButtonDate1">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Curseur par d&#xe9;faut"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
     </Component>
@@ -186,6 +191,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Au"/>
       </Properties>
+    </Component>
+    <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo1">
     </Component>
   </SubComponents>
 </Form>

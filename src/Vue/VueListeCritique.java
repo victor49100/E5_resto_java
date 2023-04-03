@@ -5,12 +5,14 @@
 package Vue;
 
 import Metier.Critiquer;
+import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JTextField;
 
 /**
@@ -30,7 +32,7 @@ public class VueListeCritique extends javax.swing.JFrame {
         modelCritique = new DefaultTableModel();
         jTableCritiques.setModel(modelCritique);
         jTableCritiques.setRowHeight(40);
-
+        
     }
     
 
@@ -80,6 +82,7 @@ public class VueListeCritique extends javax.swing.JFrame {
         jLabelFiltre = new javax.swing.JLabel();
         jLabelDu = new javax.swing.JLabel();
         jLabelAu = new javax.swing.JLabel();
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,14 +127,16 @@ public class VueListeCritique extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jButtonRetour)
                 .addGap(78, 78, 78)
-                .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabelDu)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelAu)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,10 +162,12 @@ public class VueListeCritique extends javax.swing.JFrame {
                         .addComponent(jLabelFiltre)
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonDate2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonDate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDu)
-                            .addComponent(jLabelAu))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButtonDate2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonDate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelDu)
+                                .addComponent(jLabelAu))
+                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addContainerGap())
@@ -203,9 +210,9 @@ public class VueListeCritique extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
     private javax.swing.JButton jButtonDate1;
     private javax.swing.JButton jButtonDate2;
     private javax.swing.JButton jButtonRetour;
