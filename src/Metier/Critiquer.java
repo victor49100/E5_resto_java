@@ -23,6 +23,7 @@ import java.util.Date;
 @Entity
 @Table(name = "critiquer")
 @NamedQueries({
+    @NamedQuery(name = "Critiquer.findAllOrderByDateDesc", query = "SELECT c FROM Critiquer c ORDER BY c.date DESC"),
     @NamedQuery(name = "Critiquer.findAll", query = "SELECT c FROM Critiquer c"),
     @NamedQuery(name = "Critiquer.findByIdR", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idR = :idR"),
     @NamedQuery(name = "Critiquer.findByNote", query = "SELECT c FROM Critiquer c WHERE c.note = :note"),
@@ -50,6 +51,14 @@ public class Critiquer implements Serializable {
     private Administrateur administrateur;
 
     public Critiquer() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Critiquer(CritiquerPK critiquerPK) {

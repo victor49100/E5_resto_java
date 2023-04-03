@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import Metier.Critiquer;
 import Metier.Resto;
 import Metier.Utilisateur;
+import java.util.Date;
 import javax.persistence.Query;
 
 /**
@@ -48,15 +49,17 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
     private void afficherLesAdresses() {
         Query q;
         getVue().getModelCritique().setRowCount(0);
-        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note"};
+        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note","Date"};
         getVue().getModelCritique().setColumnIdentifiers(titresColonnes);
-        List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAll").getResultList();
+        List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAllOrderByDateDesc").getResultList();
 
         for (int i = 0; i < critiquerResult.size(); i++) {
             List<String> lignes = new ArrayList<>();
 
             String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
             String commentaire = critiquerResult.get(i).getCommentaire();
+            Date dateCom = critiquerResult.get(i).getDate();
+            String dateComStr = dateCom+"";
             String note = "NULL";
             if (critiquerResult.get(i).getNote() != null) {
                 note = critiquerResult.get(i).getNote().toString();
@@ -66,6 +69,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
             lignes.add(nomResto);
             lignes.add(commentaire);
             lignes.add(note);
+            lignes.add(dateComStr);
             getVue().getModelCritique().addRow(lignes.toArray());
         }
     }
