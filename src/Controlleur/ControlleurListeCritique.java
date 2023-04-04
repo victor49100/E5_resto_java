@@ -17,8 +17,11 @@ import javax.swing.table.DefaultTableModel;
 import Metier.Critiquer;
 import Metier.Resto;
 import Metier.Utilisateur;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Query;
 
 /**
@@ -29,9 +32,10 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
 
     private Vue.VueListeCritique vue;
     private ControlleurPrincipal CtrlP;
-    String date1 = "";
-    String date2 = "";
+    String dateStr1 = "";
+    String dateStr2 = "";
     SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
 
     public ControlleurListeCritique(VueListeCritique vue, ControlleurPrincipal CtrlP) {
         this.vue = vue;
@@ -80,7 +84,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         }
     }
 
-    private void afficherLesAdressesBetwenDate(String dateDebut, String dateFin) {
+    private void afficherLesAdressesBetwenDate(Date dateDebut, Date dateFin) {
         Query q;
         getVue().getModelCritique().setRowCount(0);
         String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note", "Date"};
@@ -152,18 +156,27 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == vue.getTest()) {
-            
-            date1 = vue.getDateChooserCombo1().getText();
-            date2 = vue.getDateChooserCombo2().getText();
-            this.vue.getDate1().setText("" + vue.getDateChooserCombo1().getText());
-            this.vue.getDate2().setText("" + vue.getDateChooserCombo2().getText());
-            afficherLesAdressesBetwenDate(date1, date2);
+
+            dateStr1 = vue.getDateChooserCombo1().getText();
+            dateStr2 = vue.getDateChooserCombo2().getText();
+            Date date1;
+            Date date2;
+            try {
+                date1 = formatter.parse(dateStr1);
+                date2 = formatter.parse(dateStr2);
+                this.vue.getDate1().setText(vue.getDateChooserCombo1().getText());
+                this.vue.getDate2().setText(vue.getDateChooserCombo2().getText());
+                afficherLesAdressesBetwenDate(date1, date2);
+            } catch (ParseException ex) {
+                Logger.getLogger(ControlleurListeCritique.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
 
         if (e.getSource() == vue.getjButtonRetour()) {
             CtrlP.quitterVueCommentaire();
         }
-        
+
         if (e.getSource() == vue.getBoutonCommentaire()) {
             afficherLesAdresses();
         }
