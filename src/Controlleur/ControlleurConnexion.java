@@ -118,6 +118,11 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
         }
 
     }
+    
+    public void HideLog(){
+        vue.getjTextLogin().setText("");
+        vue.getjTextPassword().setText("");
+    };
 
     //methode de hash password en MD5
     private String HashToMd5(String passwordToHash) {

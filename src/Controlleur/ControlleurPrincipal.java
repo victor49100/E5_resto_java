@@ -67,6 +67,7 @@ public class ControlleurPrincipal {
     public void quitterVueCommentaire() {
         int rep = JOptionPane.showConfirmDialog(null, "Vous allez être deconnecté \nEtes-vous sûr(e) ? ", null, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (rep == JOptionPane.YES_OPTION) {
+            CtrlConnexion.HideLog();
             afficherVueConnection();
             EntityTransaction tx = em.getTransaction();
             tx.commit();
