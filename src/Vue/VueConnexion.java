@@ -4,6 +4,7 @@
  */
 package Vue;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class VueConnexion extends javax.swing.JFrame {
      */
     public VueConnexion() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#8BC6D3"));
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
@@ -41,6 +43,7 @@ public class VueConnexion extends javax.swing.JFrame {
         jButtonValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 204, 255));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -54,7 +57,7 @@ public class VueConnexion extends javax.swing.JFrame {
 
         jLabel4.setText("Mot de passe");
 
-        jButtonValider.setText("Connection");
+        jButtonValider.setText("Connexion");
         jButtonValider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonValiderActionPerformed(evt);

@@ -133,130 +133,88 @@ public class VueListeCritique extends javax.swing.JFrame {
 
         jLabelAu.setText("Au");
 
-        dateChooserCombo1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
-            new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    true,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(0, 0, 255),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(128, 128, 128),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(255, 0, 0),
-                    false,
-                    false,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                (datechooser.view.BackRenderer)null,
-                false,
-                true)));
+        Date1.setText("Date1:");
 
-    Date1.setText("Date1:");
+        Date2.setText("Date2:");
 
-    Date2.setText("Date2:");
+        Test.setText("Trier par date");
+        Test.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TestActionPerformed(evt);
+            }
+        });
 
-    Test.setText("Trier par date");
-    Test.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            TestActionPerformed(evt);
-        }
-    });
+        BoutonCommentaire.setText("Tout les commentaires");
 
-    BoutonCommentaire.setText("Tout les commentaires");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelFiltre)
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButtonRetour)
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addGap(129, 129, 129)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelDu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(Test))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                .addComponent(BoutonCommentaire)))))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelAu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Date2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelTitre)
+                                .addComponent(jButtonRetour)
+                                .addComponent(jLabelDu))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelFiltre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelAu)
+                                .addComponent(Test)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Date1)
+                    .addComponent(Date2)
+                    .addComponent(BoutonCommentaire))
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jScrollPane1)
-        .addGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelFiltre)
-                    .addGap(21, 21, 21))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(jButtonRetour)
-                    .addGap(78, 78, 78)
-                    .addComponent(jLabelTitre, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addGap(129, 129, 129)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelDu)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(47, 47, 47)
-                            .addComponent(Test))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                            .addComponent(BoutonCommentaire)))))
-            .addGap(34, 34, 34)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jLabelAu)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(Date2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(151, Short.MAX_VALUE))
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTitre)
-                            .addComponent(jButtonRetour)
-                            .addComponent(jLabelDu))))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jLabelFiltre)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAu)
-                            .addComponent(Test)))))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Date1)
-                .addComponent(Date2)
-                .addComponent(BoutonCommentaire))
-            .addGap(57, 57, 57)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-            .addContainerGap())
-    );
-
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetourActionPerformed
