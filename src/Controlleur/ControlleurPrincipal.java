@@ -7,6 +7,8 @@ package Controlleur;
 import Controlleur.*;
 import Vue.VueListeCritique;
 import Vue.VueConnexion;
+import Metier.Responsable;
+import Metier.Administrateur;
 import javax.swing.JOptionPane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -21,6 +23,7 @@ public class ControlleurPrincipal {
     private ControlleurConnexion CtrlConnexion;
     private ControlleurListeCritique CrtlCritique;
     private ControlleurResponsable CtrlResp;
+    private Administrateur adminConnecte;
     private EntityManager em;
 
     //instanciation
@@ -45,6 +48,14 @@ public class ControlleurPrincipal {
         this.CrtlCritique = CrtlCritique;
     }
 
+    public Administrateur getAdminConnecte() {
+        return adminConnecte;
+    }
+
+    public void setAdminConnecte(Administrateur adminConnecte) {
+        this.adminConnecte = adminConnecte;
+    }        
+
     //methodes Customs
     public void AfficheVueCritique() {
         this.CtrlConnexion.getVue().setVisible(false);
@@ -68,9 +79,8 @@ public class ControlleurPrincipal {
         int rep = JOptionPane.showConfirmDialog(null, "Vous allez être deconnecté \nEtes-vous sûr(e) ? ", null, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (rep == JOptionPane.YES_OPTION) {
             CtrlConnexion.HideLog();
-            afficherVueConnection();
-            EntityTransaction tx = em.getTransaction();
-            tx.commit();
+            this.adminConnecte = null;
+            afficherVueConnection();                        
         }
 
     }

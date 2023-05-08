@@ -11,6 +11,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import Metier.Administrateur;
+import Metier.Critiquer;
 import Metier.Utilisateur;
 
 /**
@@ -52,5 +53,18 @@ public class TestAdministrateur_JPA {
         for (Object unResultat : q.getResultList()){
             System.out.println(unResultat);
         }
+        
+        System.out.println("\nTest de la persistance");
+        em.getTransaction().begin();
+        em.persist(admin);        
+        q = em.createNamedQuery("Critiquer.findByCritiquerPk");
+        q.setParameter("idU", 3);
+        q.setParameter("idR", 9);
+        Critiquer laCritique = (Critiquer)q.getSingleResult();
+        admin.addCritiquer(laCritique);
+        System.out.println(admin.toString());
+        
+        em.getTransaction().commit();
+        
      }
 }

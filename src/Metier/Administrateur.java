@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -46,7 +47,8 @@ public class Administrateur implements Serializable  {
     private String mdpA;
     @Column(name = "pseudoA")
     private String pseudoA;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "administrateur")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="idA")
     private Collection<Critiquer> critiquerCollection;
 
     public Administrateur(Long idU, String mdpU, String pseudoU, Collection<Critiquer> critiquerCollection) {
@@ -100,6 +102,16 @@ public class Administrateur implements Serializable  {
     public void setCritiquerCollection(Collection<Critiquer> critiquerCollection) {
         this.critiquerCollection = critiquerCollection;
     }
+    
+    public void addCritiquer(Critiquer laCritique) {
+        laCritique.setAdministrateur(this);
+        this.critiquerCollection.add(laCritique);
+    }
+    
+    public void removeCritiquer(Critiquer laCritique) {
+        laCritique.setAdministrateur(null);
+        this.critiquerCollection.remove(laCritique);
+    }
 
     @Override
     public int hashCode() {
@@ -123,6 +135,11 @@ public class Administrateur implements Serializable  {
 
     @Override
     public String toString() {
-        return getClass().getName() + "[ idU=" + idA + " ]";
+        String returnString = getClass().getName() + "[ idU=" + idA + ", CritiquerCollection=";
+        for(Critiquer laCritique : this.critiquerCollection){
+            returnString += laCritique.toString();
+        }
+        returnString += "]";
+        return returnString;       
     }  
 }

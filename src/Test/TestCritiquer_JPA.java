@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Test;
+import Metier.Administrateur;
 import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
@@ -61,19 +62,57 @@ public class TestCritiquer_JPA {
         
         
         System.out.println("\nTest de la méthode Critiquer.findByIdU");
+        em.getTransaction().begin();
         q = em.createNamedQuery("Critiquer.findByIdU");
         q.setParameter("idU",1);        
         System.out.println(q.getResultList());
         
+        System.out.println("\nTest de la relation administrateur/critique");
+        //Initialisation des variables                
+        Query qAdmin = em.createQuery("SELECT a FROM Administrateur a WHERE a.idA = 1");        
+        Query qCritique = em.createNamedQuery("Critiquer.findByCritiquerPk");
+        qCritique.setParameter("idU",1);
+        qCritique.setParameter("idR",7);
+        Critiquer laCritique = (Critiquer)qCritique.getSingleResult();
+        Administrateur admin1 = (Administrateur)qAdmin.getSingleResult();
         
-        System.out.println("Suppression de l'ancien commentaire de test");
-        TypedQuery<Critiquer> typedQuery = (TypedQuery<Critiquer>) em.createNamedQuery("Critiquer.findByIdRAndIdU");
-        typedQuery.setParameter("idR",1);
-        typedQuery.setParameter("idU", 1);
-        if(typedQuery != null){
-        list = typedQuery.getResultList();
-        persist(em,list);
+        System.out.println("\nAjout d'une critique masquée à un administrateur");
+        
+        admin1.addCritiquer(laCritique);
+        
+        System.out.println("\nTest de la persistence, la critique devrait retourner un admin");        
+        laCritique = (Critiquer)qCritique.getSingleResult();        
+        admin1 = (Administrateur)qAdmin.getSingleResult();        
+        System.out.println("Etat de l'admin après ajout = " + admin1.toString());
+        System.out.println("Admin critique1 = " + laCritique.getAdministrateur().toString());
+        
+        System.out.println("\nSuppression d'une critique masquée liéé à un administrateur");        
+        admin1.removeCritiquer(laCritique);
+        
+        System.out.println("\nTest de la persistence, la critique devrait avoir son champ admin égal à null"); 
+        admin1 = (Administrateur)qAdmin.getSingleResult();
+        laCritique = (Critiquer)qCritique.getSingleResult();
+        String adminCritique;
+        if (laCritique.getAdministrateur() == null){
+            adminCritique = "vide";
+        } else {
+            adminCritique = "echec";
         }
+        System.out.println("Etat de l'admin après suppression = " + admin1.toString());
+        System.out.println("Admin critique1 = "+adminCritique);
+        em.getTransaction().commit();
+        
+        
+        
+        
+//        System.out.println("Suppression de l'ancien commentaire de test");
+//        TypedQuery<Critiquer> typedQuery = (TypedQuery<Critiquer>) em.createNamedQuery("Critiquer.findByIdRAndIdU");
+//        typedQuery.setParameter("idR",1);
+//        typedQuery.setParameter("idU", 1);
+//        if(typedQuery != null){
+//        list = typedQuery.getResultList();
+//        persist(em,list);
+//        }
 
         
         

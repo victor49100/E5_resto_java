@@ -29,7 +29,8 @@ import java.util.Date;
     @NamedQuery(name = "Critiquer.findByIdR", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idR = :idR"),
     @NamedQuery(name = "Critiquer.findByNote", query = "SELECT c FROM Critiquer c WHERE c.note = :note"),
     @NamedQuery(name = "Critiquer.findByCommentaire", query = "SELECT c FROM Critiquer c WHERE c.commentaire = :commentaire"),
-    @NamedQuery(name = "Critiquer.findByIdU", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idU = :idU")})
+    @NamedQuery(name = "Critiquer.findByIdU", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idU = :idU"),
+    @NamedQuery(name = "Critiquer.findByCritiquerPk", query = "SELECT c FROM Critiquer c WHERE c.critiquerPK.idU = :idU AND c.critiquerPK.idR = :idR")})
 public class Critiquer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,7 +48,7 @@ public class Critiquer implements Serializable {
     @JoinColumn(name = "idU", referencedColumnName = "idU", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Utilisateur utilisateur;
-    @JoinColumn(name = "idA", referencedColumnName = "idA", insertable = false, updatable = false)
+    @JoinColumn(name = "idA", referencedColumnName = "idA")
     @ManyToOne(optional = true)
     private Administrateur administrateur;
 
@@ -141,6 +142,7 @@ public class Critiquer implements Serializable {
     @Override
     public String toString() {
         return "projet2_resto_java.Critiquer[ critiquerPK=" + critiquerPK + " ]";
-    }
+    }    
+    
     
 }

@@ -105,10 +105,11 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
                 requete.setParameter("mdpA", MdpHash);
                 //ont test la corespondance
                 if (requete.getSingleResult().getClass() == Administrateur.class){
-                Administrateur admin = (Administrateur) requete.getSingleResult();
-                this.ctrlP.AfficheVueCritique();
+                    this.ctrlP.setAdminConnecte((Administrateur)requete.getSingleResult());                    
+                    this.ctrlP.AfficheVueCritique();
                 }
                 if (requete.getSingleResult().getClass() == Responsable.class){
+                    this.ctrlP.setAdminConnecte((Responsable)requete.getSingleResult());                    
                     this.ctrlP.afficherVueResp();
                 }
                 

@@ -48,6 +48,7 @@ public class Main {
 
         } catch (Exception e) {
             System.out.println("Probleme de connexion au Serveur !");
+            System.out.println(e);
         }
 
         //controlleur Principal

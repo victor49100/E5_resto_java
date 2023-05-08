@@ -57,13 +57,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="dateChooserCombo1" min="-2" pref="92" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="Test" min="-2" max="-2" attributes="0"/>
+                              <Component id="JButtonTri" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="Date1" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="JLabelDate1" min="-2" pref="73" max="-2" attributes="0"/>
                               <EmptySpace pref="53" max="32767" attributes="0"/>
-                              <Component id="BoutonCommentaire" min="-2" max="-2" attributes="0"/>
+                              <Component id="JBoutonCommentaire" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -75,9 +75,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="dateChooserCombo2" min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="Date2" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Component id="JLabelDate2" min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="151" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jButtonDemasquer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButtonMasquer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,20 +110,25 @@
                           <Component id="dateChooserCombo2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="jLabelAu" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Test" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JButtonTri" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Date1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Date2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BoutonCommentaire" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JLabelDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JLabelDate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JBoutonCommentaire" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="414" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="452" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonMasquer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonDemasquer" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -213,27 +225,37 @@
     </Component>
     <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo2">
     </Component>
-    <Component class="javax.swing.JLabel" name="Date1">
+    <Component class="javax.swing.JLabel" name="JLabelDate1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Date1:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Date2">
+    <Component class="javax.swing.JLabel" name="JLabelDate2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Date2:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Test">
+    <Component class="javax.swing.JButton" name="JButtonTri">
       <Properties>
         <Property name="text" type="java.lang.String" value="Trier par date"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TestActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JButtonTriActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BoutonCommentaire">
+    <Component class="javax.swing.JButton" name="JBoutonCommentaire">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tout les commentaires"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonMasquer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Masquer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonDemasquer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="D&#xe9;masquer"/>
       </Properties>
     </Component>
   </SubComponents>
