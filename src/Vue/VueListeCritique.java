@@ -116,6 +116,8 @@ public class VueListeCritique extends javax.swing.JFrame {
         jButtonDemasquer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fenêtre d'administration");
+        setBackground(new java.awt.Color(102, 204, 255));
 
         jLabelTitre.setFont(new java.awt.Font("Ubuntu Mono", 0, 24)); // NOI18N
         jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

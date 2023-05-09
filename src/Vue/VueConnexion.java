@@ -43,6 +43,7 @@ public class VueConnexion extends javax.swing.JFrame {
         jButtonValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fenêtre d'administration");
         setBackground(new java.awt.Color(102, 204, 255));
         setResizable(false);
 
