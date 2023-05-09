@@ -4,6 +4,8 @@
  */
 package Vue;
 
+import java.awt.Color;
+
 /**
  *
  * @author acassard
@@ -15,6 +17,7 @@ public class VueResponsable extends javax.swing.JFrame {
      */
     public VueResponsable() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#8BC6D3"));
     }
 
     /**
@@ -29,6 +32,7 @@ public class VueResponsable extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fenêtre d'administration");
 
         jLabel1.setText("Menu Responsable (à faire)");
 

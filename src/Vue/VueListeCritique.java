@@ -32,6 +32,7 @@ public class VueListeCritique extends javax.swing.JFrame {
      */
     public VueListeCritique() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#8BC6D3"));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         modelCritique = new DefaultTableModel();
         this.jTableCritiques.setDefaultRenderer(Object.class, new CustomCellRenderer());
