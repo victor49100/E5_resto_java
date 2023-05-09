@@ -141,7 +141,7 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         this.CtrlP.getEm().refresh(adminConnecte);                                                  
         adminConnecte.addCritiquer(laCritique);                                                     
         this.CtrlP.getEm().getTransaction().commit();
-        this.vue.getModelCritique().setValueAt("masqué", this.vue.getjTableCritiques().getSelectedRow(), 5);
+        this.vue.getModelCritique().setValueAt("masqué", this.vue.getjTableCritiques().getSelectedRow(), 5); //ajoute l'atribut "masqué" dans une 5 collone invisible
         this.vue.getjTableCritiques().revalidate();
         this.vue.getjTableCritiques().repaint();
         this.CtrlP.getEm().getTransaction().begin(); 

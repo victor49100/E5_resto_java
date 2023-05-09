@@ -47,7 +47,7 @@ public class Main {
             VueMain.setVisible(true);
 
         } catch (Exception e) {
-            System.out.println("Probleme de connexion au Serveur !");
+            System.out.println("Problème de connexion au Serveur !");
             System.out.println(e);
         }
 
