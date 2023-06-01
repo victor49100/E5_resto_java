@@ -40,7 +40,6 @@ INSERT INTO `aimer` (`idR`, `idU`) VALUES
 (10, 1),
 (11, 5);
 
-
 INSERT INTO `administrateur` (`mdpA`,`pseudoA`,`role`) VALUES
 ('f957c3b748aa5d068f8d9f7f320ca1c3','Mvictor','Administrateur'),
 ('d41e98d1eafa6d6011d3a70f1a5b92f0','Acassard','responsable'),

@@ -29,6 +29,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "administrateur")
 @NamedQueries({
+    //affichage moyenne
     @NamedQuery(name = "Administrateur.findAll", query = "SELECT a FROM Administrateur a"),
     @NamedQuery(name = "Administrateur.findByMdp", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA"),    
     @NamedQuery(name = "Administrateur.findByConnexion", query = "SELECT a FROM Administrateur a WHERE a.mdpA = :mdpA and a.pseudoA = :pseudoA"),
@@ -41,10 +42,13 @@ public class Administrateur implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    
     @Column(name = "idA")
     private Long idA;
+    
     @Column(name = "mdpA")
     private String mdpA;
+    
     @Column(name = "pseudoA")
     private String pseudoA;
     @OneToMany(cascade = CascadeType.ALL)

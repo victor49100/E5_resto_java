@@ -33,7 +33,6 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
     public ControlleurConnexion(VueConnexion vue, ControlleurPrincipal ctrlP) {
         this.vue = vue;
         this.ctrlP = ctrlP;
-
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
         this.vue.getjTextLogin().addActionListener(this);
@@ -87,7 +86,7 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        
+
     }
 
     @Override
@@ -104,26 +103,28 @@ public class ControlleurConnexion implements WindowListener, ActionListener {
                 // on set le mdp dans le query
                 requete.setParameter("mdpA", MdpHash);
                 //ont test la corespondance
-                if (requete.getSingleResult().getClass() == Administrateur.class){
-                    this.ctrlP.setAdminConnecte((Administrateur)requete.getSingleResult());                    
+                if (requete.getSingleResult().getClass() == Administrateur.class) {
+                    this.ctrlP.setAdminConnecte((Administrateur) requete.getSingleResult());
                     this.ctrlP.AfficheVueCritique();
                 }
-                if (requete.getSingleResult().getClass() == Responsable.class){
-                    this.ctrlP.setAdminConnecte((Responsable)requete.getSingleResult());                    
+                if (requete.getSingleResult().getClass() == Responsable.class) {
+                    this.ctrlP.setAdminConnecte((Responsable) requete.getSingleResult());
                     this.ctrlP.afficherVueResp();
                 }
-                
+
             } catch (Exception exception) {
             }
 
         }
 
     }
-    
-    public void HideLog(){
+
+    public void HideLog() {
         vue.getjTextLogin().setText("");
         vue.getjTextPassword().setText("");
-    };
+    }
+
+    ;
 
     //methode de hash password en MD5
     private String HashToMd5(String passwordToHash) {

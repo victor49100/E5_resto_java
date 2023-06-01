@@ -34,7 +34,8 @@ public class TestAdministrateur_JPA {
         q = em.createNamedQuery("Administrateur.findAll");
         //System.out.println(q.getResultList());
         for (Object unResultat : q.getResultList()){
-            System.out.println(unResultat);
+            
+            System.out.println(((Administrateur)unResultat).getPseudoA());
         }
         
         System.out.println("\nTest de la méthode Administrateur.findByMdp");

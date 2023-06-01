@@ -50,7 +50,6 @@ public class Main {
             System.out.println("Problème de connexion au Serveur !");
             System.out.println(e);
         }
-
         //controlleur Principal
         //Instancie les vues et Controlleurs
         //creation des objets pour le test:

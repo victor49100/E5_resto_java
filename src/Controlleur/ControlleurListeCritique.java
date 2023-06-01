@@ -65,42 +65,42 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
 
     private void afficherLesCritiques() {
         Query q;
-        this.vue.getModelCritique().setRowCount(0);        
-        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note", "Date", "Hidden"};        
-        this.vue.getModelCritique().setColumnIdentifiers(titresColonnes);                                
+        this.vue.getModelCritique().setRowCount(0);
+        String[] titresColonnes = {"Pseudo", "Resto", "Critique", "Note", "Date", "Hidden"};
+        this.vue.getModelCritique().setColumnIdentifiers(titresColonnes);
         List<Critiquer> critiquerResult = CtrlP.getEm().createNamedQuery("Critiquer.findAllOrderByDateDesc").getResultList();
         this.lesIdCritiques = new CritiquerPK[critiquerResult.size()];
 
         for (int i = 0; i < critiquerResult.size(); i++) {
             this.lesIdCritiques[i] = critiquerResult.get(i).getCritiquerPK();
-            Object[] lignes = new Object[6];           
+            Object[] lignes = new Object[6];
             String pseudo = critiquerResult.get(i).getUtilisateur().getPseudoU();
-            String commentaire = critiquerResult.get(i).getCommentaire();            
+            String commentaire = critiquerResult.get(i).getCommentaire();
             String dateComStr = sdf.format(critiquerResult.get(i).getDate());
             String note = "NULL";
             if (critiquerResult.get(i).getNote() != null) {
                 note = critiquerResult.get(i).getNote().toString();
             }
-            String nomResto = critiquerResult.get(i).getResto().getNomR();              
+            String nomResto = critiquerResult.get(i).getResto().getNomR();
             lignes[0] = pseudo;
             lignes[1] = nomResto;
             lignes[2] = commentaire;
             lignes[3] = note;
-            lignes[4] = dateComStr;            
-            if (critiquerResult.get(i).getAdministrateur() != null){
+            lignes[4] = dateComStr;
+            if (critiquerResult.get(i).getAdministrateur() != null) {
                 lignes[5] = "masqué";
             }
             getVue().getModelCritique().addRow(lignes);
-            
+
         }
         this.vue.getjTableCritiques().getColumnModel().getColumn(5).setWidth(0);
         this.vue.getjTableCritiques().getColumnModel().getColumn(5).setMinWidth(0);
-        this.vue.getjTableCritiques().getColumnModel().getColumn(5).setMaxWidth(0);        
+        this.vue.getjTableCritiques().getColumnModel().getColumn(5).setMaxWidth(0);
     }
 
     private void afficherLesCritiquesBetweenDate(Date dateDebut, Date dateFin) {
-        Query q;      
-        getVue().getModelCritique().setRowCount(0);        
+        Query q;
+        getVue().getModelCritique().setRowCount(0);
 
         // Créer la requête nommée "Critiquer.findByDate" pour obtenir les commentaires triés par date
         q = CtrlP.getEm().createNamedQuery("Critiquer.findByDate");
@@ -119,42 +119,42 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
             if (critiquerResult.get(i).getNote() != null) {
                 note = critiquerResult.get(i).getNote().toString();
             }
-            String nomResto = critiquerResult.get(i).getResto().getNomR();            
+            String nomResto = critiquerResult.get(i).getResto().getNomR();
             lignes[0] = pseudo;
             lignes[1] = nomResto;
             lignes[2] = commentaire;
             lignes[3] = note;
             lignes[4] = dateComStr;
-            if (critiquerResult.get(i).getAdministrateur() != null){
+            if (critiquerResult.get(i).getAdministrateur() != null) {
                 lignes[5] = "masqué";
             }
-            getVue().getModelCritique().addRow(lignes);            
+            getVue().getModelCritique().addRow(lignes);
         }
     }
-    
+
     private void masquerLaCritique(CritiquerPK laCritiquePK) {
         Query q = CtrlP.getEm().createNamedQuery("Critiquer.findByCritiquerPk");
         q.setParameter("idU", laCritiquePK.getIdU());
         q.setParameter("idR", laCritiquePK.getIdR());
-        Critiquer laCritique = (Critiquer)q.getSingleResult(); 
+        Critiquer laCritique = (Critiquer) q.getSingleResult();
         Administrateur adminConnecte = this.CtrlP.getAdminConnecte();
-        this.CtrlP.getEm().refresh(adminConnecte);                                                  
-        adminConnecte.addCritiquer(laCritique);                                                     
+        this.CtrlP.getEm().refresh(adminConnecte);
+        adminConnecte.addCritiquer(laCritique);
         this.CtrlP.getEm().getTransaction().commit();
         this.vue.getModelCritique().setValueAt("masqué", this.vue.getjTableCritiques().getSelectedRow(), 5); //ajoute l'atribut "masqué" dans une 5 collone invisible
         this.vue.getjTableCritiques().revalidate();
         this.vue.getjTableCritiques().repaint();
-        this.CtrlP.getEm().getTransaction().begin(); 
+        this.CtrlP.getEm().getTransaction().begin();
     }
-    
-    private void demasquerLaCritique(CritiquerPK laCritiquePK){
+
+    private void demasquerLaCritique(CritiquerPK laCritiquePK) {
         Query q = CtrlP.getEm().createNamedQuery("Critiquer.findByCritiquerPk");
         q.setParameter("idU", laCritiquePK.getIdU());
         q.setParameter("idR", laCritiquePK.getIdR());
-        Critiquer laCritique = (Critiquer)q.getSingleResult();
+        Critiquer laCritique = (Critiquer) q.getSingleResult();
         Administrateur adminConnecte = this.CtrlP.getAdminConnecte();
-        this.CtrlP.getEm().refresh(adminConnecte);                                                     
-        adminConnecte.removeCritiquer(laCritique);                                       
+        this.CtrlP.getEm().refresh(adminConnecte);
+        adminConnecte.removeCritiquer(laCritique);
         this.CtrlP.getEm().getTransaction().commit();
         this.vue.getModelCritique().setValueAt(null, this.vue.getjTableCritiques().getSelectedRow(), 5);
         this.vue.getjTableCritiques().revalidate();
@@ -225,18 +225,18 @@ public class ControlleurListeCritique implements WindowListener, ActionListener 
         if (e.getSource() == vue.getBoutonCommentaire()) {
             afficherLesCritiques();
         }
-        
+
         if (e.getSource() == vue.getjButtonMasquer()) {
-            if (this.vue.getjTableCritiques().getSelectedRow() != -1){
-                CritiquerPK laCritiquerPK = this.lesIdCritiques[this.vue.getjTableCritiques().getSelectedRow()];                
+            if (this.vue.getjTableCritiques().getSelectedRow() != -1) {
+                CritiquerPK laCritiquerPK = this.lesIdCritiques[this.vue.getjTableCritiques().getSelectedRow()];
                 masquerLaCritique(laCritiquerPK);
             }
         }
-        
+
         if (e.getSource() == vue.getJbuttonDemasquer()) {
-            if (this.vue.getjTableCritiques().getSelectedRow() != -1){
+            if (this.vue.getjTableCritiques().getSelectedRow() != -1) {
                 CritiquerPK laCritiquerPK = this.lesIdCritiques[this.vue.getjTableCritiques().getSelectedRow()];
-                demasquerLaCritique(laCritiquerPK);                
+                demasquerLaCritique(laCritiquerPK);
             }
         }
 
